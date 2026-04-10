@@ -1,0 +1,64 @@
+.data
+	msg1: .asciiz"primeira nota: "
+	msg2: .asciiz"segunda nota: "
+	msg3: .asciiz"terceira nota: "
+	msg4: .asciiz"quarta nota: "
+	
+	maprovado: .asciiz"APROVADO"
+	
+
+.text
+.globl main
+
+main:
+	#escrita e leitura das 4 notas
+	li $v0, 4
+	la $a0, msg1
+	syscall
+	
+	li $v0, 5
+	syscall 
+	add $t1, $v0, 0
+	
+	li $v0, 4
+	la $a0, msg2
+	syscall
+	
+	li $v0, 5
+	syscall
+	add $t2, $v0, 0
+	
+	li $v0, 4
+	la $a0, msg3
+	syscall
+	
+	li $v0, 5
+	syscall
+	add $t3, $v0, 0
+	
+	li $v0, 4
+	la $a0, msg4
+	syscall 
+	
+	li $v0, 5
+	syscall
+	add $t4, $v0, 0
+	
+	#calculo da media
+	add $t5, $t1, $t2
+	add $t5, $t3, $t4
+	div $t5, $t5, 4
+	
+	#valida aprovacao
+	bge $t5, 6, aprovado
+	
+aprovado:
+	
+exame:
+
+reprovado:
+
+fimse:
+	
+	
+	  
